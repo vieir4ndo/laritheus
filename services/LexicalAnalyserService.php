@@ -50,6 +50,12 @@ class LexicalAnalyserService
                     }
                 }
 
+                $token_as_array = str_split($token);
+
+                if ($e->get_name() == "DB" && end($token_as_array) != "\""){
+                    $e = $grammar->get_rule_by_name(Configuration::get_err_rule_name());
+                }
+
                 if ($e->get_is_final()) {
                     // is int
                     if ($e->get_name() == "CZ") {
@@ -73,6 +79,7 @@ class LexicalAnalyserService
                     }
                     // is id, var or string
                     else if ($e->get_name() == "CY" or $e->get_name() == "DB") {
+
                         $id = null;
                         foreach ($symbol_table as $item){
                             if ($item["rotulo"] == $token){
@@ -106,7 +113,7 @@ class LexicalAnalyserService
                             "token_type" => $token,
                             "line" => $line
                         ];
-                        CommandLineHelper::print_magenta_message("Lexical error: Token {$token} on line {$line} was not recognized");
+                        CommandLineHelper::print_magenta_message("Lexical error: Token '{$token}' on line {$line} was not recognized");
                     }
                     // is key word
                     else {
@@ -145,7 +152,7 @@ class LexicalAnalyserService
         $has_errors = false;
 
         foreach ($tape as $item){
-            if ($item["token_type"] == Configuration::get_init_rule_name()){
+            if ($item["afd_state"] == Configuration::get_err_rule_name()){
                 $has_errors = true;
             }
         }
@@ -155,4 +162,6 @@ class LexicalAnalyserService
         else
             exit(0);
     }
+
+
 }

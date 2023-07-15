@@ -1,5 +1,4 @@
 program _meuprograma ;
 begin
-write ( "testado_while" ) ;
-write ( "testado_repeat" ) ;
+write ( "testado_while" )
 end .

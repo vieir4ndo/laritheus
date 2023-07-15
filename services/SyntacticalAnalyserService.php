@@ -33,9 +33,9 @@ class SyntacticalAnalyserService
         $done = false;
 
         while (true) {
-            //system('clear');
-            //print_r($symbol_stack);
-            //print_r($state_stack);
+            /*system('clear');
+            print_r($symbol_stack);
+            print_r($state_stack);*/
 
             $current_state = $parser_table->get_state_by_id($state_stack->peek());
 
