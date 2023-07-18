@@ -1,18 +1,18 @@
 program "meuprograma" ;
 begin
-if ( _teste = 10 ) then
+if ( 11 = 10 ) then
 begin
-while ( _teste != 10 )
+while ( 10 != 10 )
 begin
-write ( "testado_while" ) ;
+integer _teste ;
 end ;
 end ;
 else
 begin
 repeat
 begin
-write ( "testado_repeat" ) ;
+write ( "teste" ) ;
 end ;
-until ( 1 > 11,9 ) ;
+until ( _teste > 11,9 ) ;
 end ;
 end .

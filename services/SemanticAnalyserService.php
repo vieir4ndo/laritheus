@@ -13,7 +13,17 @@ class SemanticAnalyserService
         foreach ($symbol_table as $item){
             if ($item["type"] == "var" and !$item["declarada"]){
                 $errors = true;
-                CommandLineHelper::print_magenta_message("Semantic error: Var '{$item["rotulo"]}' on line {$item["linha"]} was not declared");
+                $lines = join( ", ", $item["linha"]);
+                CommandLineHelper::print_magenta_message("Semantic error: Var '{$item["rotulo"]}' on lines {{$lines}} was not declared");
+            }
+
+            if($item["type"] == "var" and $item["declarada"]){
+                sort($item["linha"]);
+                $lines = join( ", ", $item["linha"]);
+                if ($item["declarada_em"] > $item["linha"][0]){
+                    $errors = true;
+                    CommandLineHelper::print_magenta_message("Semantic error: Var '{$item["rotulo"]}' on line {{$lines}} was used before declaration");
+                }
             }
         }
 

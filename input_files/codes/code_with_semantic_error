@@ -1,4 +1,18 @@
 program "meuprograma" ;
 begin
-write ( _teste10 ) ;
+if ( 11 = 10 ) then
+begin
+while ( _teste != 10 )
+begin
+integer _teste ;
+end ;
+end ;
+else
+begin
+repeat
+begin
+write ( _error ) ;
+end ;
+until ( _teste > 11,9 ) ;
+end ;
 end .

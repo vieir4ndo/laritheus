@@ -63,6 +63,7 @@ class SyntacticalAnalyserService
                     for ($j = 0; $j < count($symbol_table); $j++){
                         if ($symbol_table[$j]["rotulo"] == $tape[$i - 2]["token_value"]){
                             $symbol_table[$j]["declarada"] = true;
+                            $symbol_table[$j]["declarada_em"] = $tape[$i - 2]["line"];
                         }
                     }
                 }

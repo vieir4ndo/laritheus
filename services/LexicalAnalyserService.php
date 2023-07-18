@@ -81,9 +81,10 @@ class LexicalAnalyserService
                     else if ($e->get_name() == "CY" or $e->get_name() == "DB") {
 
                         $id = null;
-                        foreach ($symbol_table as $item){
-                            if ($item["rotulo"] == $token){
-                                $id = $item["id"];
+                        for ($i = 0; $i < count($symbol_table); $i++){
+                            if ($symbol_table[$i]["rotulo"] == $token){
+                                array_push($symbol_table[$i]["linha"], $line);
+                                $id = $symbol_table[$i]["id"];
                                 break;
                             }
                         }
@@ -94,9 +95,9 @@ class LexicalAnalyserService
                             $symbol_table[] = [
                                 "id" => $id,
                                 "rotulo" => $token,
-                                "linha" => $line,
+                                "linha" => array($line),
                                 "type" => ($e->get_name() == "CY") ? "var" : "string",
-                                "declarada"=> ($e->get_name() == "CY") ? false : null,
+                                "declarada"=> ($e->get_name() == "CY") ? false : null
                             ];
                         }
 
