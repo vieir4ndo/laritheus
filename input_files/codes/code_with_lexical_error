@@ -1,6 +1,6 @@
 proram _meuprograma ;
 begin
-intger _teste := 10 ;
+intger _teste ;
 if ( _teste = 10 ) thn
 begi
 write ( "teste" ) ;
