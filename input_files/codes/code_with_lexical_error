@@ -1,4 +1,4 @@
-proram _meuprograma ;
+proram "meuprograma" ;
 begin
 intger _teste ;
 if ( _teste = 10 ) thn

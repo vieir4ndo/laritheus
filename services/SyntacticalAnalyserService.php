@@ -49,8 +49,8 @@ class SyntacticalAnalyserService
 
             if ($transition == null) {
                 $token_to_show = ($tape[$i - 1]["token_type"] == "id") ? $tape[$i - 1]["token_value"] : $tape[$i - 1]["token_type"];
-                CommandLineHelper::print_magenta_message("Syntactical error near '{$token_to_show}' at line {$tape[$i-1]["line"]}");
-                break;
+                CommandLineHelper::print_magenta_message("Syntactical error: Error near '{$token_to_show}' on line {$tape[$i-1]["line"]}");
+                exit(0);
             }
 
             if ($transition->get_action() == TransitionAction::Shift) {
@@ -58,6 +58,15 @@ class SyntacticalAnalyserService
                 $state_stack->push($transition->get_next_state());
                 $symbol_stack->push($transition->get_token());
             } else if ($transition->get_action() == TransitionAction::Reduce) {
+
+                if ($symbol_stack->peek() == "declaracao"){
+                    for ($j = 0; $j < count($symbol_table); $j++){
+                        if ($symbol_table[$j]["rotulo"] == $tape[$i - 2]["token_value"]){
+                            $symbol_table[$j]["declarada"] = true;
+                        }
+                    }
+                }
+
                 foreach ($production_number_dictionary[$transition->get_next_state()]["items_to_reduce"] as $_) {
                     $state_stack->pop();
                     $symbol_stack->pop();

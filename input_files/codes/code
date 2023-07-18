@@ -1,8 +1,8 @@
-program _meuprograma ;
+program "meuprograma" ;
 begin
 if ( _teste = 10 ) then
 begin
-write ( "teste" ) ;
+integer _teste ;
 end ;
 else
 begin

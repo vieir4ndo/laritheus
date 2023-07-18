@@ -12,6 +12,7 @@ try {
     $lexical_analyser_service = $containerBuilder->get('LexicalAnalyserService');
     $parser_table_mapper = $containerBuilder->get('ParserTableMapper');
     $syntactical_analyser_service = $containerBuilder->get("SyntacticalAnalyserService");
+    $semantic_analyser_service = $containerBuilder->get("SemanticAnalyserService");
 
     CommandLineHelper::print_yellow_message("Welcome to Laritheus\n");
 
@@ -46,6 +47,7 @@ try {
 
     $syntactical_analyser_service->execute($symbol_table, $tape, $parser_table, $production_number_dictionary);
 
+    $semantic_analyser_service->execute($symbol_table);
 
 } catch (Exception $e) {
     CommandLineHelper::print_magenta_message("Oops, we found an error while processing your request, please contact our development team to solve it.");

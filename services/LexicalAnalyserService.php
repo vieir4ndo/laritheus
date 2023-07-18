@@ -94,7 +94,9 @@ class LexicalAnalyserService
                             $symbol_table[] = [
                                 "id" => $id,
                                 "rotulo" => $token,
-                                "linha" => $line
+                                "linha" => $line,
+                                "type" => ($e->get_name() == "CY") ? "var" : "string",
+                                "declarada"=> ($e->get_name() == "CY") ? false : null,
                             ];
                         }
 
