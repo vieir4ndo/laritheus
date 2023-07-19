@@ -22,7 +22,7 @@ class SemanticAnalyserService
                 $lines = join( ", ", $item["linha"]);
                 if ($item["declarada_em"] > $item["linha"][0]){
                     $errors = true;
-                    CommandLineHelper::print_magenta_message("Semantic error: Var '{$item["rotulo"]}' on line {{$lines}} was used before declaration");
+                    CommandLineHelper::print_magenta_message("Semantic error: Var '{$item["rotulo"]}' on lines {{$lines}} was used before declaration");
                 }
             }
         }

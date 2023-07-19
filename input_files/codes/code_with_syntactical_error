@@ -1,4 +1,9 @@
 program "meuprograma" ;
 begin
-write ( "testado_while" )
+if ( 10 = 10 ) else
+begin
+end ;
+then
+end
+begin ;
 end .

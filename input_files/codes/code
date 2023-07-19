@@ -1,8 +1,9 @@
 program "meuprograma" ;
 begin
+integer _teste ;
 if ( _teste = 10 ) then
 begin
-integer _teste ;
+write ( _teste ) ;
 end ;
 else
 begin

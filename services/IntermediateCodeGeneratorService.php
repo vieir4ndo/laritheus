@@ -29,7 +29,8 @@ class IntermediateCodeGeneratorService
 
             if ($item["type"] == "var" and isset($item["valor"])){
                 $val = (is_numeric(str_replace(",", "",$item["valor"]))) ? $item["valor"] : $item["rotulo"];
-                $code = "{$code}    addi t{$j}, zero, {$val}\n";
+                $op = (is_numeric(str_replace(",", "",$item["valor"]))) ? "li" : "la";
+                $code = "{$code}    {$op} t{$j}, {$val}\n";
                 $j++;
             }
         }
