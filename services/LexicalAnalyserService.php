@@ -5,6 +5,7 @@ namespace Services;
 use Configuration\Configuration;
 use Entities\Grammar;
 use Helpers\CommandLineHelper;
+use Helpers\StringHelper;
 
 class LexicalAnalyserService
 {
@@ -50,12 +51,6 @@ class LexicalAnalyserService
                     }
                 }
 
-                $token_as_array = str_split($token);
-
-                if ($e->get_name() == "DB" && end($token_as_array) != "\""){
-                    $e = $grammar->get_rule_by_name(Configuration::get_err_rule_name());
-                }
-
                 if ($e->get_is_final()) {
                     // is int
                     if ($e->get_name() == "CZ") {
@@ -78,7 +73,7 @@ class LexicalAnalyserService
                         ];
                     }
                     // is id, var or string
-                    else if ($e->get_name() == "CY" or $e->get_name() == "DB") {
+                    else if ($e->get_name() == "CY" or $e->get_name() == "DC") {
 
                         $id = null;
                         for ($i = 0; $i < count($symbol_table); $i++){

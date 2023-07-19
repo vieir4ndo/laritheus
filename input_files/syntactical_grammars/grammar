@@ -1,18 +1,18 @@
 programa->program id ; begin corpo end .
-corpo->declaracao
-corpo->atribuicao
-corpo->se
-corpo->laco
+corpo->declaracao corpo
+corpo->atribuicao corpo
+corpo->se corpo
+corpo->laco corpo
 corpo->''
-corpo->escrever
-corpo->ler
+corpo->escrever corpo
+corpo->ler corpo
 declaracao->tipo id ;
 tipo->integer
 tipo->decimal
 tipo->bool
 tipo->string
-atribuicao->id := termo
-atribuicao->id := expressao
+atribuicao->id := termo ;
+atribuicao->id := expressao ;
 termo->id
 se->if ( condicao ) then bloco else bloco
 bloco->begin corpo end ;
@@ -30,7 +30,7 @@ comparador-><
 laco->para
 laco->repita
 laco->enquanto
-para->for ( atribuicao ; condicao ; atribuicao ) bloco
+para->for ( atribuicao condicao ; atribuicao ) bloco
 repita->repeat bloco until ( condicao ) ;
 enquanto->while ( condicao ) bloco
 escrever->write ( id ) ;

@@ -1,0 +1,9 @@
+program "meuprograma" ;
+begin
+integer _teste ;
+_teste := 10 ;
+decimal _teste1 ;
+_teste1 := 10,99999 ;
+string _teste2 ;
+_teste2 := "olhasó" ;
+end .

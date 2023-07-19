@@ -53,21 +53,28 @@ class SyntacticalAnalyserService
                 exit(0);
             }
 
+            if (!$symbol_stack->isEmpty() && $symbol_stack->peek() == "declaracao"){
+                for ($j = 0; $j < count($symbol_table); $j++){
+                    if ($symbol_table[$j]["rotulo"] == $tape[$i - 2]["token_value"]){
+                        $symbol_table[$j]["declarada"] = true;
+                        $symbol_table[$j]["declarada_em"] = $tape[$i - 2]["line"];
+                    }
+                }
+            }
+
+            if (!$symbol_stack->isEmpty() && $symbol_stack->peek() == "atribuicao") {
+                for ($j = 0; $j < count($symbol_table); $j++){
+                    if ($symbol_table[$j]["rotulo"] == $tape[$i - 4]["token_value"]){
+                        $symbol_table[$j]["valor"] = $tape[$i - 2]["token_value"];
+                    }
+                }
+            }
+
             if ($transition->get_action() == TransitionAction::Shift) {
                 $i++;
                 $state_stack->push($transition->get_next_state());
                 $symbol_stack->push($transition->get_token());
             } else if ($transition->get_action() == TransitionAction::Reduce) {
-
-                if ($symbol_stack->peek() == "declaracao"){
-                    for ($j = 0; $j < count($symbol_table); $j++){
-                        if ($symbol_table[$j]["rotulo"] == $tape[$i - 2]["token_value"]){
-                            $symbol_table[$j]["declarada"] = true;
-                            $symbol_table[$j]["declarada_em"] = $tape[$i - 2]["line"];
-                        }
-                    }
-                }
-
                 foreach ($production_number_dictionary[$transition->get_next_state()]["items_to_reduce"] as $_) {
                     $state_stack->pop();
                     $symbol_stack->pop();

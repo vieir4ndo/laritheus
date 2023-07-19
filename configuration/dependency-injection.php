@@ -23,4 +23,5 @@ $containerBuilder->register('ParserTableMapper', \Services\ParserTableMapper::cl
     ->addArgument($containerBuilder->get("InputFileService"));;
 $containerBuilder->register('SyntacticalAnalyserService', \Services\SyntacticalAnalyserService::class);
 $containerBuilder->register('SemanticAnalyserService', \Services\SemanticAnalyserService::class);
+$containerBuilder->register('IntermediateCodeGeneratorService', \Services\IntermediateCodeGeneratorService::class);
 
