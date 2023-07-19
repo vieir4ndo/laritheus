@@ -14,6 +14,7 @@ try {
     $syntactical_analyser_service = $containerBuilder->get("SyntacticalAnalyserService");
     $semantic_analyser_service = $containerBuilder->get("SemanticAnalyserService");
     $intermediate_code_generator_service = $containerBuilder->get("IntermediateCodeGeneratorService");
+    $code_optimizer_service = $containerBuilder->get("CodeOptimizerService");
 
     CommandLineHelper::print_yellow_message("Welcome to Laritheus\n");
 
@@ -51,6 +52,8 @@ try {
     $semantic_analyser_service->execute($symbol_table);
 
     $intermediate_code_generator_service->execute($symbol_table);
+
+    $code_optimizer_service->execute($symbol_table);
 
 } catch (Exception $e) {
     CommandLineHelper::print_magenta_message("Oops, we found an error while processing your request, please contact our development team to solve it.");

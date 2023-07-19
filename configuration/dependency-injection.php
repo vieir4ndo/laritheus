@@ -24,4 +24,5 @@ $containerBuilder->register('ParserTableMapper', \Services\ParserTableMapper::cl
 $containerBuilder->register('SyntacticalAnalyserService', \Services\SyntacticalAnalyserService::class);
 $containerBuilder->register('SemanticAnalyserService', \Services\SemanticAnalyserService::class);
 $containerBuilder->register('IntermediateCodeGeneratorService', \Services\IntermediateCodeGeneratorService::class);
+$containerBuilder->register('CodeOptimizerService', \Services\CodeOptimizerService::class);
 

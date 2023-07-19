@@ -12,6 +12,6 @@ write ( _teste1 ) ;
 end ;
 else
 begin
-read ( _teste2 ) ;
+read ( _teste ) ;
 end ;
 end .
